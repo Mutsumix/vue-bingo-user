@@ -37,7 +37,11 @@ export default {
       return element.count > 0
     },
     answerClick(element) {
-      element.count++;
+      if(element.count === 1){
+        element.count--;
+      }else{
+        element.count++;
+      }
 
       if (this.isBingo) {
         alert('ビンゴ！')
