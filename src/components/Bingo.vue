@@ -7,7 +7,11 @@
              :class="isActive(answers[(y - 1)*tableHeight + (x-1)]) ? 'active' : ''"
              v-bind:key="x"
              v-for="x in tableWidth">
-          <p class="mb-0">{{ answers[(y - 1)*tableHeight + (x-1)].answer }}</p>
+          <p class="mb-0" v-if="x === tableWidth-4">{{ numbers_B[(y-1)].answer }}</p>
+          <p class="mb-0" v-else-if="x === tableWidth-3">{{ numbers_I[(y-1)].answer }}</p>
+          <p class="mb-0" v-else-if="x === tableWidth-2">{{ numbers_N[(y-1)].answer }}</p>
+          <p class="mb-0" v-else-if="x === tableWidth-1">{{ numbers_G[(y-1)].answer }}</p>
+          <p class="mb-0" v-else-if="x === tableWidth">{{ numbers_O[(y-1)].answer }}</p>
         </div>
       </div>
     </div>
@@ -30,6 +34,11 @@ export default {
       tableWidth: 5,
       tableHeight: 5,
       answers: [],
+      numbers_B: [],
+      numbers_I: [],
+      numbers_N: [],
+      numbers_G: [],
+      numbers_O: [],
     }
   },
   methods: {
@@ -49,7 +58,43 @@ export default {
     },
     newGame() {
       const bingoAnswers = BingoElements.answers;
+      const bingoNumbers_B = BingoElements.row_B;
+      const bingoNumbers_I = BingoElements.row_I;
+      const bingoNumbers_N = BingoElements.row_N;
+      const bingoNumbers_G = BingoElements.row_G;
+      const bingoNumbers_O = BingoElements.row_O;
+
       this.answers = _.shuffle(bingoAnswers).slice(0, this.tableHeight * this.tableWidth).map((element) => {
+        return {
+          count: 0,
+          answer: element
+        }
+      })
+      this.numbers_B = _.shuffle(bingoNumbers_B).slice(0, this.tableHeight).map((element) => {
+        return {
+          count: 0,
+          answer: element
+        }
+      })
+      this.numbers_I = _.shuffle(bingoNumbers_I).slice(0, this.tableHeight).map((element) => {
+        return {
+          count: 0,
+          answer: element
+        }
+      })
+      this.numbers_N = _.shuffle(bingoNumbers_N).slice(0, this.tableHeight).map((element) => {
+        return {
+          count: 0,
+          answer: element
+        }
+      })
+      this.numbers_G = _.shuffle(bingoNumbers_G).slice(0, this.tableHeight).map((element) => {
+        return {
+          count: 0,
+          answer: element
+        }
+      })
+      this.numbers_O = _.shuffle(bingoNumbers_O).slice(0, this.tableHeight).map((element) => {
         return {
           count: 0,
           answer: element
