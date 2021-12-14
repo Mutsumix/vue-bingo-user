@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <AppHeader></AppHeader>
-    <Bingo></Bingo>
     <router-view/>
     <AppFooter></AppFooter>
   </div>
