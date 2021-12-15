@@ -1,6 +1,23 @@
 <template>
   <div class="notouch py-5">
     <div class="bingo-cards-wrapper" v-if="answers.length > 0">
+      <div class="bingo-grid-row">
+        <div class="bingo-card bg-danger">
+          <p class="mb-0">B</p>
+        </div>
+        <div class="bingo-card bg-warning">
+          <p class="mb-0">I</p>
+        </div>
+        <div class="bingo-card bg-success">
+          <p class="mb-0">N</p>
+        </div>
+        <div class="bingo-card bg-info">
+          <p class="mb-0">G</p>
+        </div>
+        <div class="bingo-card bg-primary">
+          <p class="mb-0">O</p>
+        </div>
+      </div>
       <div class="bingo-grid-row" v-bind:key="y" v-for="y in tableHeight">
         <div class="bingo-card"
              @click="answerClick(answers[(y - 1)*tableHeight + (x-1)])"
@@ -64,7 +81,7 @@ export default {
         const user = prompt('おめでとうございます！名前を入力してください');
         const answers = this.answers.filter((a) => a.count === 1);
         const formData = new FormData();
-        formData.append('token', '');
+        formData.append('token', 'xoxb-2070188486354-2843107345683-jiBuB14Jie03YNvjH2JRbqUV');
         formData.append('channel', 'bingo');
         formData.append('text', 'BINGO!! from ' + user + ', '   //ユーザー名
         + answers[0].answer + ', '                              //ビンゴ当たり目
