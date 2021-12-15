@@ -15,9 +15,12 @@
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-bingo mx-auto d-block mt-5" @click="newGame">
+    <!-- <button type="button" class="btn btn-bingo mx-auto d-block mt-5" @click="newGame">
       やり直し!
-    </button>
+    </button> -->
+    <h3>
+      <div id="createTime" class="createTime mx-auto col-4" style="width:300px"></div>
+    </h3>
   </div>
 </template>
 
@@ -103,6 +106,9 @@ export default {
           answer: element
         }
       })
+
+      let now = new Date();
+      document.getElementById("createTime").innerHTML = `作成時刻：${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
     },
   },
   computed: {
@@ -157,6 +163,13 @@ export default {
   animation-name: bingo;
   animation-duration: 2s;
   animation-iteration-count: infinite;
+}
+
+.createTime {
+  border-color: #eee;
+  background-color: #ff9911;
+  color: #eee;
+  font-weight: bold;
 }
 
 .btn-bingo {
