@@ -1,15 +1,14 @@
 <template>
   <header>
-    <p class="mb-0">シスマック忘年会２０２１</p>
-    </p>
+    <p class="m-0">シスマック忘年会🎉２０２１🥳</p>
   </header>
 </template>
 
 <style>
 header {
-  font-family: "Meiryo", Times, serif;
-  background-color: rgba(0, 0, 0, 0.66);
-  background-image: linear-gradient(to top, rgba(180, 180, 180, 0.5), rgba(255, 255, 255, 0));
+  font-family: "メイリオ", "HiraKakuProN-W3", Times, serif;
+  background-color: rgba(0, 255, 85, 0.404);
+  background-image: linear-gradient(45deg,#ff6f00,#ffca28);
   text-align: center;
   border-top: 4px;
   border-bottom: 4px solid rgba(0, 0, 0, 0.8);
@@ -17,7 +16,7 @@ header {
 }
 
 header p {
-  font-size: 22px;
+  font-size: 30px;
   color: #eee;
   font-weight: bold;
 }

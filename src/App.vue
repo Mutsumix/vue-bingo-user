@@ -9,21 +9,19 @@
 <script>
   import AppHeader from './components/AppHeader'
   import AppFooter from './components/AppFooter'
-  // import Bingo from './components/Bingo'
 
   export default {
     components: {
       AppHeader,
       AppFooter,
-      // Bingo
     }
   }
 </script>
 
 <style>
 body {
-  //background-color: #ab0000;
-  background: url('./assets/bg.png') 192px 192px repeat;
+  /* background-color: #ab0000; */
+  background: url('./assets/bg.jpg')  repeat;
 }
 
 .notouch {

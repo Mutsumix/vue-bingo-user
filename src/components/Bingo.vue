@@ -2,19 +2,19 @@
   <div class="notouch py-5">
     <div class="bingo-cards-wrapper" v-if="answers.length > 0">
       <div class="bingo-grid-row">
-        <div class="bingo-card bg-danger">
+        <div class="bingo-card-header bg-danger">
           <p class="mb-0">B</p>
         </div>
-        <div class="bingo-card bg-warning">
+        <div class="bingo-card-header bg-warning">
           <p class="mb-0">I</p>
         </div>
-        <div class="bingo-card bg-success">
+        <div class="bingo-card-header bg-success">
           <p class="mb-0">N</p>
         </div>
-        <div class="bingo-card bg-info">
+        <div class="bingo-card-header bg-info">
           <p class="mb-0">G</p>
         </div>
-        <div class="bingo-card bg-primary">
+        <div class="bingo-card-header bg-primary">
           <p class="mb-0">O</p>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default {
         const user = prompt('おめでとうございます！名前を入力してください');
         const answers = this.answers.filter((a) => a.count === 1);
         const formData = new FormData();
-        formData.append('token', 'xoxb-2070188486354-2843107345683-jiBuB14Jie03YNvjH2JRbqUV');
+        formData.append('token', 'xoxb-2070188486354-2843107345683-rwps3h2eEucCH7TztMAH9Azb');
         formData.append('channel', 'bingo');
         formData.append('text', 'BINGO!! from ' + user + ', '   //ユーザー名
         + answers[0].answer + ', '                              //ビンゴ当たり目
@@ -159,6 +159,28 @@ export default {
 
 .bingo-grid-row {
   display: flex;
+}
+
+.bingo-card-header {
+  margin: 5px;
+  /* cursor: pointer; */
+  text-align: center;
+  background-color: hsla(0, 0%, 100%, 0.95);
+  /* background-image: linear-gradient(0deg, hsla(0, 0%, 70.6%, .8), hsla(0, 0%, 100%, 0.25)); */
+  /* border: 5px solid #c00; */
+  font-weight: bold;
+  font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+  font-size: 18px;
+  word-wrap: break-word;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  padding: 5px 10px;
+  color: yellow;
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bingo-card {

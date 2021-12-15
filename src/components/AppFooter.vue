@@ -23,7 +23,7 @@
 
 <style>
 footer {
-  background-color: #790000;
+  background: linear-gradient(45deg,#ff5252,#f48fb1);
   color: #fff;
   padding: 20px 0;
   text-align: center;
