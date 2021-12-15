@@ -9,13 +9,13 @@
 <script>
   import AppHeader from './components/AppHeader'
   import AppFooter from './components/AppFooter'
-  import Bingo from './components/Bingo'
+  // import Bingo from './components/Bingo'
 
   export default {
     components: {
       AppHeader,
       AppFooter,
-      Bingo
+      // Bingo
     }
   }
 </script>
