@@ -60,6 +60,20 @@ export default {
 
       if (this.isBingo) {
         alert('ビンゴ！')
+
+        const user = prompt('おめでとうございます！名前を入力してください');
+        const answers = this.answers.filter((a) => a.count === 1);
+        const formData = new FormData();
+        formData.append('token', '');
+        formData.append('channel', 'bingo');
+        formData.append('text', 'BINGO!! from ' + user + ', '   //ユーザー名
+        + answers[0].answer + ', '                              //ビンゴ当たり目
+        + answers[1].answer + ', ' 
+        + answers[2].answer + ', ' 
+        + answers[3].answer + ', ' 
+        + answers[4].answer + ', ' 
+        + document.getElementById("createTime").innerHTML);     //カード作成日
+        fetch('https://slack.com/api/chat.postMessage', {method: 'POST', body: formData});  //送信
       }
     },
     newGame() {
