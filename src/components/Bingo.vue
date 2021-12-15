@@ -9,7 +9,7 @@
              v-for="x in tableWidth">
           <p class="mb-0" v-if="x === tableWidth-4">{{ numbers_B[(y-1)].answer }}</p>
           <p class="mb-0" v-else-if="x === tableWidth-3">{{ numbers_I[(y-1)].answer }}</p>
-          <p class="mb-0" v-else-if="x === tableWidth-2">{{ numbers_N[(y-1)].answer }}</p>
+          <p class="mb-0" v-else-if="x === tableWidth-2"><strong v-if="y === tableHeight-2">FREE</strong><strong v-else>{{ numbers_N[(y-1)].answer }}</strong></p>
           <p class="mb-0" v-else-if="x === tableWidth-1">{{ numbers_G[(y-1)].answer }}</p>
           <p class="mb-0" v-else-if="x === tableWidth">{{ numbers_O[(y-1)].answer }}</p>
         </div>
@@ -40,6 +40,9 @@ export default {
       numbers_G: [],
       numbers_O: [],
     }
+  },
+  updated(){
+    this.answers[12].count = 1;
   },
   methods: {
     isActive(element) {
