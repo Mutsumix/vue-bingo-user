@@ -5,15 +5,15 @@
                 <div class="col-md-6">
                     <p class="mb-0"><strong>このアプリは梶原と星野が業務時間外に作りました</strong></p>
                     <p>
-                         Github
-                        <a href="https://github.com/Mutxumix" target="_blank">@mutsumix </a>
+                         
+                        <a href="https://github.com/Mutsumix/vue-bingo-user" target="_blank">vue-bingo-user </a>
                     </p>
                 </div>
                 <div class="col-md-6">
                     <p class="mb-0"></p>
                     <p>
                          Github
-                        <a href="https://github.com/Mutxumix" target="_blank">@ </a>
+                        <a href="https://github.com/Mutsumix" target="_blank">@Mutsumix </a>
                     </p>
                 </div>
             </div>
