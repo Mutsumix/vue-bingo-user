@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="bingo-grid-row" v-bind:key="y" v-for="y in tableHeight">
-        <div class="bingo-card"
+        <div class="bingo-card" id="pc"
              @click="answerClick(answers[(y - 1)*tableHeight + (x-1)])"
              :class="isActive(answers[(y - 1)*tableHeight + (x-1)]) ? 'active' : ''"
              v-bind:key="x"
@@ -357,5 +357,12 @@ export default {
   100% {
     border-color: #ff2222;
   }
+}
+@media (min-width: 768px) {
+   /* 横幅が800px以上の場合に適用するスタイル */
+   div#pc {
+      height: 100px;
+      font-size: 30px;
+      }
 }
 </style>
