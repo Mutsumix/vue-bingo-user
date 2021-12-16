@@ -74,6 +74,10 @@ export default {
       }else{
         element.count++;
       }
+      
+      if(this.isReach){
+        alert(this.isReach + 'ラインリーチ！')
+      }
 
       if (this.isBingo) {
         alert('ビンゴ！')
@@ -81,7 +85,7 @@ export default {
         const user = prompt('おめでとうございます！名前を入力してください');
         const answers = this.answers.filter((a) => a.count === 1);
         const formData = new FormData();
-        formData.append('token', 'xoxb-2070188486354-2843107345683-rwps3h2eEucCH7TztMAH9Azb');
+        formData.append('token', 'xoxb-2070188486354-2843107345683-YwzugFb6f4dgifSMfjCgIN4u');
         formData.append('channel', 'bingo');
         formData.append('text', 'BINGO!! from ' + user + ', '   //ユーザー名
         + answers[0].answer + ', '                              //ビンゴ当たり目
@@ -144,8 +148,104 @@ export default {
   },
   computed: {
     isBingo() {
-      const answers = this.answers.filter((a) => a.count === 0);
-      return !answers.length;
+          //チェック済みのセル取得
+          const answers = this.answers.filter((a) => a.count === 1).map((element) => {
+            return {
+              index: _.indexOf(this.answers, element),
+              answer: element
+            }
+          });
+          //列に対するビンゴ判定
+          var bingoColLines = [];
+          var colAnswers = [];
+          for(var col = 0; col < 5; col++){
+            colAnswers = answers.filter((element) => _.floor(element.index / 5, 0) == col);
+            if(colAnswers.length == 5){
+              bingoColLines.push({
+                col: col,
+                answers: colAnswers
+              });
+            }
+          }
+          //行に対するビンゴ判定
+          var bingoRowLines = [];
+          var rowAnswers = [];
+          for(var row = 0; row < 5; row++){
+            rowAnswers = answers.filter((element) => element.index % 5 == row);
+            if(rowAnswers.length == 5){
+              bingoRowLines.push({
+                row: row,
+                answers: rowAnswers
+              });
+            }
+          }
+          //対角に対するビンゴ判定
+          var bingoXLines = [];
+          const x1Answers = answers.filter((element) => _.floor(element.index / 5, 0) == element.index % 5);
+          const x2Answers = answers.filter((element) => _.floor(element.index / 5, 0) == (4 - element.index % 5));
+          if(x1Answers.length == 5){
+            bingoXLines.push({
+              x: 1,
+              answers: x1Answers
+            });
+          }
+          if(x2Answers.length == 5){
+            bingoXLines.push({
+              x: 2,
+              answers: x2Answers
+            });
+          }
+          return bingoRowLines.length + bingoColLines.length + bingoXLines.length;
+    },
+    isReach() {
+      //チェック済みのセル取得
+      const answers = this.answers.filter((a) => a.count === 1).map((element) => {
+        return {
+          index: _.indexOf(this.answers, element),
+          answer: element
+        }
+      });
+      //列に対するリーチ判定
+      var ReachColLines = [];
+      var colAnswers = [];
+      for(var col = 0; col < 5; col++){
+        colAnswers = answers.filter((element) => _.floor(element.index / 5, 0) == col);
+        if(colAnswers.length == 4){
+          ReachColLines.push({
+            col: col,
+            answers: colAnswers
+          });
+        }
+      }
+      //行に対するリーチ判定
+      var ReachRowLines = [];
+      var rowAnswers = [];
+      for(var row = 0; row < 5; row++){
+        rowAnswers = answers.filter((element) => element.index % 5 == row);
+        if(rowAnswers.length == 4){
+          ReachRowLines.push({
+            row: row,
+            answers: rowAnswers
+          });
+        }
+      }
+      //対角に対するリーチ判定
+      var ReachXLines = [];
+      const x1Answers = answers.filter((element) => _.floor(element.index / 5, 0) == element.index % 5);
+      const x2Answers = answers.filter((element) => _.floor(element.index / 5, 0) == (4 - element.index % 5));
+      if(x1Answers.length == 4){
+        ReachXLines.push({
+          x: 1,
+          answers: x1Answers
+        });
+      }
+      if(x2Answers.length == 4){
+        ReachXLines.push({
+          x: 2,
+          answers: x2Answers
+        });
+      }
+      return ReachRowLines.length + ReachColLines.length + ReachXLines.length;
     }
   }
 }
