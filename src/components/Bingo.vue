@@ -143,7 +143,7 @@ export default {
       })
 
       let now = new Date();
-      document.getElementById("createTime").innerHTML = `作成時刻：${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+      document.getElementById("createTime").innerHTML = `作成時刻：${now.getHours()}:${now.getMinutes().toString().padStart(2, "0")}:${now.getSeconds().toString().padStart(2, "0")}`
     },
   },
   computed: {
@@ -319,7 +319,7 @@ export default {
 }
 
 .createTime {
-  border-color: #eee;
+  border:solid 5px #cc0000;
   background-color: #ff9911;
   color: #eee;
   font-weight: bold;
