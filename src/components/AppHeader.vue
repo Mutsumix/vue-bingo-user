@@ -15,15 +15,19 @@ header {
   padding: 6px;
 }
 
+@media screen and (max-width: 411px) {
 header p {
-  font-size: 30px;
+    font-size: 20px;
   color: #eee;
   font-weight: bold;
 }
+}
 
-@media screen and (max-width: 374px) {
+@media screen and (min-width: 412px) {
   header p {
-    font-size: 20px;
+    font-size: 30px;
+    color: #eee;
+    font-weight: bold;
   }
 }
 </style>
