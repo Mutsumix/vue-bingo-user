@@ -2,19 +2,19 @@
   <div class="notouch py-5">
     <div class="bingo-cards-wrapper" v-if="answers.length > 0">
       <div class="bingo-grid-row">
-        <div class="bingo-card-header bg-danger">
+        <div class="bingo-card-header bg-danger" id="pc">
           <p class="mb-0">B</p>
         </div>
-        <div class="bingo-card-header bg-warning">
+        <div class="bingo-card-header bg-warning" id="pc">
           <p class="mb-0">I</p>
         </div>
-        <div class="bingo-card-header bg-success">
+        <div class="bingo-card-header bg-success" id="pc">
           <p class="mb-0">N</p>
         </div>
-        <div class="bingo-card-header bg-info">
+        <div class="bingo-card-header bg-info" id="pc">
           <p class="mb-0">G</p>
         </div>
-        <div class="bingo-card-header bg-primary">
+        <div class="bingo-card-header bg-primary" id="pc">
           <p class="mb-0">O</p>
         </div>
       </div>
