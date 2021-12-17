@@ -76,11 +76,23 @@ export default {
       }
       
       if(this.isReach){
-        alert(this.isReach + 'ラインリーチ！')
+        alert(this.isReach + '列リーチ！')
       }
 
-      if (this.isBingo) {
-        alert('ビンゴ！')
+      const bingoLines = this.isBingo
+      if (bingoLines.length) { 
+        alert('ビンゴ！');
+        
+        var answersInCard = [];
+        for(var row = 0; row < 5; row++){
+          answersInCard.push(this.numbers_B[row].answer);
+          answersInCard.push(this.numbers_I[row].answer);
+          answersInCard.push(this.numbers_N[row].answer);
+          answersInCard.push(this.numbers_G[row].answer);
+          answersInCard.push(this.numbers_O[row].answer);
+        }
+
+        answersInCard[bingoLines[0].answers[2].index] = bingoLines[0].answers[2].index != 12 ? answersInCard[bingoLines[0].answers[2].index] : 'FREE' 
 
         const user = prompt('おめでとうございます！名前を入力してください');
         const answers = this.answers.filter((a) => a.count === 1);
@@ -88,11 +100,11 @@ export default {
         formData.append('token', 'xoxb-2070188486354-2843107345683-YwzugFb6f4dgifSMfjCgIN4u');
         formData.append('channel', 'bingo');
         formData.append('text', 'BINGO!! from ' + user + ', '   //ユーザー名
-        + answers[0].answer + ', '                              //ビンゴ当たり目
-        + answers[1].answer + ', ' 
-        + answers[2].answer + ', ' 
-        + answers[3].answer + ', ' 
-        + answers[4].answer + ', ' 
+        + answersInCard[bingoLines[0].answers[0].index] + ', '                              //ビンゴ当たり目 
+        + answersInCard[bingoLines[0].answers[1].index] + ', '  
+        + answersInCard[bingoLines[0].answers[2].index] + ', '  
+        + answersInCard[bingoLines[0].answers[3].index] + ', '  
+        + answersInCard[bingoLines[0].answers[4].index] + ', '  
         + document.getElementById("createTime").innerHTML);     //カード作成日
         fetch('https://slack.com/api/chat.postMessage', {method: 'POST', body: formData});  //送信
       }
@@ -195,7 +207,7 @@ export default {
               answers: x2Answers
             });
           }
-          return bingoRowLines.length + bingoColLines.length + bingoXLines.length;
+          return bingoRowLines.concat(bingoColLines.concat(bingoXLines));
     },
     isReach() {
       //チェック済みのセル取得
